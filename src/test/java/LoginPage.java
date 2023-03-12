@@ -118,5 +118,16 @@ public class LoginPage {
         errorPayment.shouldBe((visible), Duration.ofSeconds(15));
         return new VerificationPage();
     }
+    public static VerificationPage cvcWith2Symbol(DataHelper.AuthInfo info) {
+        pay.click();
+        cardNumber.setValue(String.valueOf(DataHelper.getFirstCardNumber()));
+        mouthField.setValue(String.valueOf(DataHelper.generateValidMonth()));
+        yearField.setValue(String.valueOf(DataHelper.generateRandomYear()));
+        nameButton.setValue("12345");
+        cvcCvv.setValue("12");
+        continueButton.click();
+        errorCvc.shouldBe((visible), Duration.ofSeconds(15));
+        return new VerificationPage();
+    }
 }
 
